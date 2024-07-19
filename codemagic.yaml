@@ -10,10 +10,10 @@ workflows:
         - keystore_credentials
     scripts:
       - npm install
-      - echo "sdk.dir=$HOME/programs/android-sdk-macosx" > "$CM_BUILD_DIR/android/local.properties"
+      - echo "sdk.dir=$HOME/programs/android-sdk-macosx" > "android/local.properties"
       - |
-        chmod -R 777 $CM_BUILD_DIR
-        echo $CM_KEYSTORE | base64 --decode > $CM_BUILD_DIR/key.jks
+        chmod -R 777 android
+        echo $CM_KEYSTORE | base64 --decode > android/app/key.jks
         # build Android
         cd android
         ./gradlew assembleRelease
