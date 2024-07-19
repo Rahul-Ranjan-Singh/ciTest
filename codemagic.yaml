@@ -8,6 +8,7 @@ workflows:
       node: latest
       groups:
         - keystore_credentials
+        - google_credentials
     scripts:
       - npm install
       - echo "sdk.dir=$HOME/programs/android-sdk-macosx" > "android/local.properties"
@@ -38,3 +39,8 @@ workflows:
     artifacts:
       - android/app/build/outputs/**/**/*.apk
       - build/ios/ipa
+    publishing:
+      google_play:
+        # See the following link for information regarding publishing to Google Play - https://docs.codemagic.io/publishing-yaml/distribution/#google-play
+        credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
+        track: alpha
